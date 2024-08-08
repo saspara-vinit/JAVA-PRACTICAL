@@ -1,16 +1,20 @@
 
 import java.util.*;
 
-class MyCalculater {
+interface AdvancedArithmetic {
     int sum = 0;
+    public int divisor_sum(int n) ;
+}
 
+class Mycalculater implements AdvancedArithmetic{
+    int update_sum = sum;
     public int divisor_sum(int n) {
         for (int i = 1; i <= n; i++) {
             if (n % i == 0) {
-                sum += i;
+                update_sum += i;
             }
         }
-        return sum;
+        return update_sum;
     }
 }
 
@@ -19,7 +23,7 @@ public class pr_21 {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the number : ");
         int n = sc.nextInt();
-        MyCalculater mc = new MyCalculater();
+        Mycalculater mc = new Mycalculater();
         int sum = mc.divisor_sum(n);
         System.out.println("The sum of divisors of " + n + " is " + sum);
         sc.close();
